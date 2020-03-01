@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Car Search</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/cars.html">Car Search</a>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div id="carapp">
+                <form>
+                    <div class="form-group select-form">
+                        <select class="form-control" v-model='make' @change='getMakeModel()'>
+                            <option :value='0' disabled selected >Select Make</option>
+                            <option v-for='data in makes.make' :value='data.make'>{{ data.make }}</option>
+                        </select>
+                        <select class="form-control" v-model='model' @change='getCars()'>
+                            <option :value='0' disabled selected >Select Model</option>
+                            <option v-for='data in models.model' :value='data.model'>{{ data.model }}</option>
+                        </select>
+                    </div>
+                </form>
+                
+                <!-- <ul>
+                    <li v-for="data in cars.data">{{data}}</li>
+                </ul> -->
+                <section class="home-cards">
+                    <div v-for="(data,index) in cars.data">
+                        <img :src="data.image">
+                        <h3>{{data.year}} {{data.model}}</h3>
+                        <p>{{data.description}}</p>
+                        <h4>Price : &euro;{{data.price}}</h4>
+                        <a href="#">Learn More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                </section>
+            </div>
+            
+        </div>
+    </div>
+    
+   <script src="js/vue.min.js"></script>
+   <script src="js/cars.js"></script>
+</body>
+</html>
